@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="assets/css/templatemo-eduwell-style.css">
     <link rel="stylesheet" href="assets/css/owl.css">
     <link rel="stylesheet" href="assets/css/lightbox.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!--
 
 TemplateMo 573 EduWell
@@ -39,24 +40,27 @@ https://templatemo.com/tm-573-eduwell
               <div class="col-12">
                   <nav class="main-nav">
                       <!-- ***** Logo Start ***** -->
-                      <a href="index.html" class="logo">
+                      <a href="index.php" class="logo">
                           <img src="assets/images/templatemo-eduwell.png" alt="EduWell Template">
                       </a>
                       <!-- ***** Logo End ***** -->
                       <!-- ***** Menu Start ***** -->
                       <ul class="nav">
                           <li class="scroll-to-section"><a href="#top" class="active">Úvod</a></li>
+                          <li class="scroll-to-section"><a href="#simple-cta">Kto sme</a></li>
                           <li class="scroll-to-section"><a href="#services">Produkty</a></li>
-                          <li class="scroll-to-section"><a href="#courses">Zadania</a></li>
-                          <li class="scroll-to-section"><a href="#simple-cta">Tabuľky</a></li> 
                           <li class="scroll-to-section"><a href="#testimonials">Recenzie</a></li> 
+                          <li class="scroll-to-section"><a href="#courses">Zadania</a></li>
                           <li class="scroll-to-section"><a href="#contact-section">Kontakt</a></li> 
                           <li class="has-sub">
-                              <a href="javascript:void(0)">Vrstvy</a>
+                              <a href="javascript:void(0)">Tabuľky</a>
                               <ul class="sub-menu">
-                                  <li><a href="datova_vrstva.html">Dátová vrstva</a></li>
-                                  <li><a href="prezencna_vrstva.html">Prezenčná vrstva</a></li>
-                                  <li><a href="aplikacna_vrstva.html">Aplikačná vrstva</a></li>
+                                  <li><a href="tabulka_vyrobky.php">výrobkov</a></li>
+                                  <li><a href="tabulka_objednavky.php">objednávok</a></li>
+                                  <li><a href="tabulka_dodacie_listy.php">dodacích listov</a></li>
+                                  <li><a href="tabulka_prijmov.php">príjmov</a></li>
+                                  <li><a href="tabulka_nakladov.php">nákladov</a></li>
+                                  <li><a href="tabulka_zisku.php">ziskov</a></li>
                               </ul>
                           </li>
                           
@@ -94,6 +98,32 @@ https://templatemo.com/tm-573-eduwell
     </div>
   </section>
   <!-- ***** Main Banner Area End ***** -->
+
+
+  <section class="simple-cta" id="simple-cta">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 offset-lg-1">
+          <div class="left-image">
+            <img src="assets/images/cta-left-image.png" alt="">
+          </div>
+        </div>
+        <div class="col-lg-5 align-self-center">
+          <h6>Kto sme?</h6>
+          <h4>Sme firma Haldy plus s.r.o.</h4>
+          <p>Malá firma sídliaca v Bratislave. Zaoberajúca sa výrobou obalov z vlnitej lepenky. Špecializujeme sa na malé krabičky ale aj na veľké a ťažké krabice.</p>
+          <p>U nás najdete širokú škálu obalových materiálov presne podľa vaších potrieb, stačí si len vybrať.</p>
+          <p>Naše krabice sa vyznačujú dlhou životnosťou, nízkou cenou a moderným dizajnom. Taktiež sú všetky z recyklovaného materiálu keďže nám záleži na životnom prostredí.</p>
+          <div class="white-button">
+            <a href="contact-us.html">View Courses</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
 
   <section class="services" id="services">
     <div class="container">
@@ -195,138 +225,7 @@ https://templatemo.com/tm-573-eduwell
     </div>
   </section>
 
-  <section class="our-courses" id="courses">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 offset-lg-3">
-          <div class="section-heading">
-            <h6>Zadania</h6>
-            <h4>z predmetu <em>PVD</em></h4>
-            <p>Ukážka zadaní z predmetu pokročilé využívanie databáz s možnosťou stiahnutia jednotlivých zadaní.</p>
-          </div>
-        </div>
-        <div class="col-lg-12">
-          <div class="naccs">
-            <div class="tabs">
-              <div class="row">
-                <div class="col-lg-3">
-                  <div class="menu">
-                    <div class="active gradient-border"><span>Zadanie 1</span></div>
-                    <div class="gradient-border"><span>Zadanie 2</span></div>
-                    <div class="gradient-border"><span>Zadanie 3</span></div>
-                    <div class="gradient-border"><span>Zadanie 4</span></div>
-                  </div>
-                </div>
-                <div class="col-lg-9">
-                  <ul class="nacc">
-                    <li class="active">
-                      <div>
-                        <div class="left-image">
-                          <img src="assets/images/courses-01.jpg" alt="">
-                          <!--<div class="price"><h6>$128</h6></div>-->
-                        </div>
-                        <div class="right-content">
-                          <h4>Modelovanie sledovanej veličiny</h4>
-                          <p>Cieľom zadania je vypočítať model sledovanej veličiny, vypočítať predikciu na najbližšie obdobie a porovnať výsledky z modelu s reálnymi hodnotami.</p>
-                          <p>Využiť pritom poznatky ktoré sme získali na seminároch a prednáškach. Sledovanú veličinu by malo byť možné sledovať na burze a porovnať predikované hodnoty so skutočnými.</p>
-                          <br> 
-                          <!--<span>36 Hours</span>
-                            <span>4 Weeks</span>
-                            <span class="last-span">3 Certificates</span>-->
-                          <div class="text-button">
-                            <a href="https://drive.google.com/file/d/19qY-aRra3LCRMaGa5m99S93tRHNDNQ40/view?usp=sharing" class="btn btn-primary">Ukázať zadanie</a>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div>
-                        <div class="left-image">
-                          <img src="assets/images/courses-02.jpg" alt="">
-                          <!--<div class="price"><h6>$156</h6></div>-->
-                        </div>
-                        <div class="right-content">
-                          <h4>Porovnanie SRBD</h4>
-                          <p>Cieľom zadania je vytvoriť prehľad viacerých SRBD, porovnať ich vlastnosti a vybrať najvhodnejší pre zvolenú firmu</p>
-                          <p>Každý z jednotlivcov si má vybrať 4-6 databázových systémov a opísať ich vlastnosti, silné a slabé stránky. Taktiež je vhodné vytvoriť v zadaní prehľadnú tabuľku porovnania. Nesmie chýbať ani záverečné zhodnotenie najvhodnejšieho softvéru pre podnik.</p>
-                          <br>
-                          <!--<span>36 Hours</span>
-                          <span>4 Weeks</span>
-                          <span class="last-span">3 Certificates</span>-->
-                          <div class="text-button">
-                            <a href="https://drive.google.com/file/d/1yZQb0MP_xk1vamzozvpVkcmdCv7UrIav/view?usp=sharing" class="btn btn-primary">Ukázať zadanie</a>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div>
-                        <div class="left-image">
-                          <img src="assets/images/courses-03.jpg" alt="">
-                          <!--<div class="price"><h6>$184</h6></div>-->
-                        </div>
-                        <div class="right-content">
-                          <h4>Tvorba tabuliek faktov</h4>
-                          <p>Cieľom zadania je vytvoriť príkazy na tvorbu tabuliek faktov v súlade s požiadavkami na cvičení.</p>
-                          <p>Prvá tabuľka faktov by mala pojednávať o príjmoch podniku za celé sledované obdobie. Entita by mala byť prehľadne usporiadaná. Druhá tabuľka je zameraná na náklady podniku, taktiež je nutné v tabuľké prehľadne usporiadať náklady za jednotlivé obdobia - roky. Posledná tabuľka hovorí o zložení výrobkov. Platia pri nej rovnaké pravidlá ako pri predchádzajúcich dvoch.</p>
-                           <!--<span>36 Hours</span>
-                          <span>4 Weeks</span>
-                          <span class="last-span">3 Certificates</span>-->
-                          <div class="text-button">
-                            <a href="https://drive.google.com/file/d/1s6lZSxWKjdxmdY6PowEVedmunxCkWNUi/view?usp=sharing" class="btn btn-primary">Ukázať zadanie</a>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div>
-                        <div class="left-image">
-                          <img src="assets/images/courses-04.jpg" alt="">
-                          <!--<div class="price"><h6>$76</h6></div>-->
-                        </div>
-                        <div class="right-content">
-                          <h4>Zaverečné zadanie</h4>
-                          <p>Cieľom tohto zadania je zoskupiť všetky poznatky získané počas štúdia predmetu pokročilé využívanie databáz. </p>
-                          <p>Zadanie má obsahovať zhrnutie všetkých predchádzajúcich zadaní a má byť taktiež doplnené o ďalšie dáta, ako napríklad o myšlienkové mapy a určité príklady z webstránky.</p>
-                          <br><br>
-                          <!--<span>36 Hours</span>
-                          <span>4 Weeks</span>
-                          <span class="last-span">3 Certificates</span>-->
-                          <div class="text-button">
-                            <a href="https://drive.google.com/file/d/1s6lZSxWKjdxmdY6PowEVedmunxCkWNUi/view?usp=sharing" class="btn btn-primary">Ukázať zadanie</a>
-                          </div>
-                        </div>
-                      </div>
-                      </li>
-                    </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <section class="simple-cta" id="simple-cta">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-5 offset-lg-1">
-          <div class="left-image">
-            <img src="assets/images/cta-left-image.png" alt="">
-          </div>
-        </div>
-        <div class="col-lg-5 align-self-center">
-          <h6>Get the sale right now!</h6>
-          <h4>Up to 50% OFF For 1+ courses</h4>
-          <p>Kogi VHS freegan bicycle rights try-hard green juice probably haven't heard of them cliche la croix af chillwave.</p>
-          <div class="white-button">
-            <a href="contact-us.html">View Courses</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section class="testimonials" id="testimonials">
     <div class="container">
@@ -392,6 +291,128 @@ https://templatemo.com/tm-573-eduwell
       </div>
     </div>
   </section>
+
+
+
+
+  <section class="our-courses" id="courses">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+          <div class="section-heading">
+            <h6>Zadania</h6>
+            <h4>z predmetu <em>PVD</em></h4>
+            <p>Ukážka zadaní z predmetu pokročilé využívanie databáz s možnosťou stiahnutia jednotlivých zadaní.</p>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="naccs">
+            <div class="tabs">
+              <div class="row">
+                <div class="col-lg-3">
+                  <div class="menu">
+                    <div class="active gradient-border"><span>Zadanie 1</span></div>
+                    <div class="gradient-border"><span>Zadanie 2</span></div>
+                    <div class="gradient-border"><span>Zadanie 3</span></div>
+                    <div class="gradient-border"><span>Zadanie 4</span></div>
+                  </div>
+                </div>
+                <div class="col-lg-9">
+                  <ul class="nacc">
+                    <li class="active">
+                      <div>
+                        <div class="left-image">
+                          <img src="assets/images/courses-01.jpg" alt="">
+                          <!--<div class="price"><h6>$128</h6></div>-->
+                        </div>
+                        <div class="right-content">
+                          <h4>Modelovanie sledovanej veličiny</h4>
+                          <p>Cieľom zadania je vypočítať model sledovanej veličiny, vypočítať predikciu na najbližšie obdobie a porovnať výsledky z modelu s reálnymi hodnotami.</p>
+                          <p>Využiť pritom poznatky ktoré sme získali na seminároch a prednáškach. Sledovanú veličinu by malo byť možné sledovať na burze a porovnať predikované hodnoty so skutočnými.</p>
+                          <br> 
+                          <!--<span>36 Hours</span>
+                            <span>4 Weeks</span>
+                            <span class="last-span">3 Certificates</span>-->
+                          <div class="text-button">
+                            <a href="https://drive.google.com/uc?export=download&id=19qY-aRra3LCRMaGa5m99S93tRHNDNQ40" class="btn btn-success fa fa-download" style="color: white;">  Stiahnúť zadanie</a>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div>
+                        <div class="left-image">
+                          <img src="assets/images/courses-02.jpg" alt="">
+                          <!--<div class="price"><h6>$156</h6></div>-->
+                        </div>
+                        <div class="right-content">
+                          <h4>Porovnanie SRBD</h4>
+                          <p>Cieľom zadania je vytvoriť prehľad viacerých SRBD, porovnať ich vlastnosti a vybrať najvhodnejší pre zvolenú firmu</p>
+                          <p>Každý z jednotlivcov si má vybrať 4-6 databázových systémov a opísať ich vlastnosti, silné a slabé stránky. Taktiež je vhodné vytvoriť v zadaní prehľadnú tabuľku porovnania. Nesmie chýbať ani záverečné zhodnotenie najvhodnejšieho softvéru pre podnik.</p>
+                          <br>
+                          <!--<span>36 Hours</span>
+                          <span>4 Weeks</span>
+                          <span class="last-span">3 Certificates</span>-->
+                          <div class="text-button">
+                            <a href="https://drive.google.com/uc?export=download&id=1yZQb0MP_xk1vamzozvpVkcmdCv7UrIav" class="btn btn-success fa fa-download" style="color: white;">  Stiahnúť zadanie</a>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div>
+                        <div class="left-image">
+                          <img src="assets/images/courses-03.jpg" alt="">
+                          <!--<div class="price"><h6>$184</h6></div>-->
+                        </div>
+                        <div class="right-content">
+                          <h4>Tvorba tabuliek faktov</h4>
+                          <p>Cieľom zadania je vytvoriť príkazy na tvorbu tabuliek faktov v súlade s požiadavkami na cvičení.</p>
+                          <p>Prvá tabuľka faktov by mala pojednávať o príjmoch podniku za celé sledované obdobie. Entita by mala byť prehľadne usporiadaná. Druhá tabuľka je zameraná na náklady podniku, taktiež je nutné v tabuľké prehľadne usporiadať náklady za jednotlivé obdobia - roky. Posledná tabuľka hovorí o zložení výrobkov. Platia pri nej rovnaké pravidlá ako pri predchádzajúcich dvoch.</p>
+                           <!--<span>36 Hours</span>
+                          <span>4 Weeks</span>
+                          <span class="last-span">3 Certificates</span>-->
+                          <div class="text-button">
+                            <a href="https://drive.google.com/uc?export=download&id=1s6lZSxWKjdxmdY6PowEVedmunxCkWNUi" class="btn btn-success fa fa-download" style="color: white;">  Stiahnúť zadanie</a>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div>
+                        <div class="left-image">
+                          <img src="assets/images/courses-04.jpg" alt="">
+                          <!--<div class="price"><h6>$76</h6></div>-->
+                        </div>
+                        <div class="right-content">
+                          <h4>Zaverečné zadanie</h4>
+                          <p>Cieľom tohto zadania je zoskupiť všetky poznatky získané počas štúdia predmetu pokročilé využívanie databáz. </p>
+                          <p>Zadanie má obsahovať zhrnutie všetkých predchádzajúcich zadaní a má byť taktiež doplnené o ďalšie dáta, ako napríklad o myšlienkové mapy a určité príklady z webstránky.</p>
+                          <br><br>
+                          <!--<span>36 Hours</span>
+                          <span>4 Weeks</span>
+                          <span class="last-span">3 Certificates</span>-->
+                          <div class="text-button">
+                            <a href="https://drive.google.com/uc?export=download&id=1s6lZSxWKjdxmdY6PowEVedmunxCkWNUi" class="btn btn-success fa fa-download" style="color: white;">  Stiahnúť zadanie</a>
+                          </div>
+                        </div>
+                      </div>
+                      </li>
+                    </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ 
+  
+
+
+  
 
   <section class="contact-us" id="contact-section">
     <div class="container">
