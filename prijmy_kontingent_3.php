@@ -77,6 +77,13 @@ https://templatemo.com/tm-573-eduwell
   </header>
   <!-- ***** Header Area End ***** -->
 
+<section>
+<img src="" alt="Tu bude obrazok grafu rok">
+</section>
+
+
+
+
   <section class="page-heading">
     <div class="container">
       <div class="row">
@@ -87,10 +94,13 @@ https://templatemo.com/tm-573-eduwell
         <thead class="table-danger" style="text-align: center;">
             <tr>
                 <th>Rok</th>
-                <th>Príjem</th>
+                <th>BA</th>
+                <th>TT</th>
+                <th>TN</th>
+                <th>NR</th>
             </tr>
         </thead>
-        <h2 style="text-align: center;">Tabuľka faktov č.3</h2>
+        <h2 style="text-align: center;">Vrchná strana kocky</h2>
         <tbody style="text-align: center;">
 
 
@@ -100,7 +110,7 @@ https://templatemo.com/tm-573-eduwell
          include 'config.php';
          $con = mysqli_connect("$localhost","$user","$password","$db");
 
-         $query = "Select (t.rok), SUM(t.polozka) FROM kapko_tf3 as t GROUP BY t.rok ORDER BY t.rok";
+         $query = "SELECT ifnull(t.rok,'spolu')Rok , sum(IF(t.id_vuc='BA',t.polozka,0)) as 'BA' , sum(IF(t.id_vuc='TT',t.polozka,0)) as 'TT' , sum(IF(t.id_vuc='TN',t.polozka,0)) as 'TN' , sum(IF(t.id_vuc='NR',t.polozka,0)) as 'NR' ,sum(t.polozka) as 'spolu' FROM kapko_tf3 t group by t.rok";
 
          $query_run = mysqli_query($con, $query);
 
@@ -111,8 +121,11 @@ https://templatemo.com/tm-573-eduwell
              ?>
 
              <tr>
-                 <td><?= $row['rok']; ?></td>
-                 <td><?= $row['SUM(t.polozka)']; ?>€</td>
+                 <td><?= $row['Rok']; ?></td>
+                 <td><?= $row['BA']; ?>€</td>
+                 <td><?= $row['TT']; ?>€</td>
+                 <td><?= $row['TN']; ?>€</td>
+                 <td><?= $row['NR']; ?>€</td>
              </tr>
              <?php
              }
@@ -133,6 +146,184 @@ https://templatemo.com/tm-573-eduwell
       </div>
     </div>
   </section>
+
+
+
+
+
+
+
+
+
+
+  <section>
+<img src="" alt="Tu bude obrazok grafu mesiac">
+</section>
+
+
+
+
+  <section class="page-heading">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="header-text">
+
+          <table class="table table-bordered" style="background-color: white;" style="text-align: center;">
+        <thead class="table-danger" style="text-align: center;">
+            <tr>
+                <th>ID Skupiny</th>
+                <th>2016</th>
+                <th>2017</th>
+                <th>2018</th>
+                <th>2019</th>
+                <th>2020</th>
+                <th>2021</th>
+                <th>2022</th>
+            </tr>
+        </thead>
+        <h2 style="text-align: center;">Bočná strana kocky</h2>
+        <tbody style="text-align: center;">
+
+
+        
+        
+        <?php
+         include 'config.php';
+         $con = mysqli_connect("$localhost","$user","$password","$db");
+
+         $query = "SELECT ifnull(t.skupina_vystupu,'spolu')id_skupiny ,
+         sum(IF(t.rok=2016,t.polozka,0)) as '2016', 
+         sum(IF(t.rok=2017,t.polozka,0)) as '2017' , 
+         sum(IF(t.rok=2018,t.polozka,0)) as '2018' , 
+         sum(IF(t.rok=2019,t.polozka,0)) as '2019' , 
+         sum(IF(t.rok=2020,t.polozka,0)) as '2020' , 
+         sum(IF(t.rok=2021,t.polozka,0)) as '2021',
+         sum(IF(t.rok=2022,t.polozka,0)) as '2022',
+         sum(t.polozka) as 'spolu' FROM kapko_tf3 t group by t.skupina_vystupu WITH ROLLUP";
+
+         $query_run = mysqli_query($con, $query);
+
+         if (mysqli_num_rows($query_run) > 0)
+         {
+             foreach($query_run as $row)
+             {
+             ?>
+
+             <tr>
+                 <td><?= $row['id_skupiny']; ?></td>
+                 <td><?= $row['2016']; ?>€</td>
+                 <td><?= $row['2017']; ?>€</td>
+                 <td><?= $row['2018']; ?>€</td>
+                 <td><?= $row['2019']; ?>€</td>
+                 <td><?= $row['2020']; ?>€</td>
+                 <td><?= $row['2021']; ?>€</td>
+                 <td><?= $row['2022']; ?>€</td>
+             </tr>
+             <?php
+             }
+         }
+         else
+         {
+             echo "nie je tu ziadna tabulka";
+         }
+         
+        ?>
+        </tbody>
+        </table>
+<?php
+?>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+  <section>
+<img src="" alt="Tu bude obrazok grafu den">
+</section>
+
+
+
+
+  <section class="page-heading">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="header-text">
+
+          <table class="table table-bordered" style="background-color: white;" style="text-align: center;">
+        <thead class="table-danger" style="text-align: center;">
+            <tr>
+                <th>ID Skupiny</th>
+                <th>BA</th>
+                <th>TT</th>
+                <th>TN</th>
+                <th>NR</th>
+            </tr>
+        </thead>
+        <h2 style="text-align: center;">Predná strana kocky</h2>
+        <tbody style="text-align: center;">
+
+
+        
+        
+        <?php
+         include 'config.php';
+         $con = mysqli_connect("$localhost","$user","$password","$db");
+
+         $query = "SELECT ifnull(t.skupina_vystupu,'spolu')id_skupiny , 
+         sum(IF(t.id_vuc='BA',t.polozka,0)) as 'BA' ,
+         sum(IF(t.id_vuc='TT',t.polozka,0)) as 'TT' ,
+         sum(IF(t.id_vuc='TN',t.polozka,0)) as 'TN' ,
+         sum(IF(t.id_vuc='NR',t.polozka,0)) as 'NR' ,
+         sum(t.polozka) as 'spolu' FROM kapko_tf3 t group by t.skupina_vystupu WITH ROLLUP";
+
+         $query_run = mysqli_query($con, $query);
+
+         if (mysqli_num_rows($query_run) > 0)
+         {
+             foreach($query_run as $row)
+             {
+             ?>
+
+             <tr>
+                 <td><?= $row['id_skupiny']; ?></td>
+                 <td><?= $row['BA']; ?>€</td>
+                 <td><?= $row['TT']; ?>€</td>
+                 <td><?= $row['TN']; ?>€</td>
+                 <td><?= $row['NR']; ?>€</td>
+             </tr>
+             <?php
+             }
+         }
+         else
+         {
+             echo "nie je tu ziadna tabulka";
+         }
+         
+        ?>
+        </tbody>
+        </table>
+<?php
+?>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
 
 
   <!-- Scripts -->

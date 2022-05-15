@@ -47,7 +47,7 @@ https://templatemo.com/tm-573-eduwell
                   <!-- ***** Logo End ***** -->
                   <!-- ***** Menu Start ***** -->
                   <ul class="nav">
-                          <li><a href="index.php">Úvod</a></li>
+                  <li><a href="index.php">Úvod</a></li>
                           <li><a href="index.php">Kto sme</a></li>
                           <li><a href="index.php">Produkty</a></li>
                           <li><a href="index.php">Recenzie</a></li> 
@@ -77,118 +77,63 @@ https://templatemo.com/tm-573-eduwell
   </header>
   <!-- ***** Header Area End ***** -->
 
+<section>
+<img src="" alt="Tu bude obrazok grafu rok">
+</section>
+
+
+
+
   <section class="page-heading">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
           <div class="header-text">
 
-
-
-          <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card mt-4">
-                    <div class="card-header">
-                        <h4>Filtrovanie výrobkov</h4>
-                    </div>
-                    <div class="card-body">
-
-                        <form action="" method="GET">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <label for="">Cena od</label>
-                                    <input type="text" name="start_price" value="<?php if(isset($_GET['start_price'])){echo $_GET['start_price']; }else{echo "0";} ?>" class="form-control">
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="">Cena do</label>
-                                    <input type="text" name="end_price" value="<?php if(isset($_GET['end_price'])){echo $_GET['end_price']; }else{echo "10";} ?>" class="form-control">
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="">Klikni na tlačidlo</label> <br/>
-                                    <button type="submit" class="btn btn-primary px-4">Filtrovať</button>
-                                </div>
-                            </div>
-                            
-                        </form>
-
-                    </div>
-                </div>
-            </div>
-
-<section><br></section>
-
-<table class="table table-bordered" style="background-color: white;" style="text-align: center;">
-        <thead class="table-secondary" style="text-align: center;">
+          <table class="table table-bordered" style="background-color: white;" style="text-align: center;">
+        <thead class="table-danger" style="text-align: center;">
             <tr>
-                <th>ID Produktu</th>
-                <th>Názov produktu</th>
-                <th>Typ produktu</th>
-                <th>Merná jednotka</th>
-                <th>Predajná cena</th>
+                <th>Skupina výstupu</th>
+                <th>Náklady</th>
             </tr>
         </thead>
-        <h2 style="text-align: center;">Tabuľka výrobkov</h2>
+        <h2 style="text-align: center;">Tabuľka nákladov podľa skupín výstupu</h2>
         <tbody style="text-align: center;">
 
 
+        
+        
+        <?php
+         include 'config.php';
+         $con = mysqli_connect("$localhost","$user","$password","$db");
 
+         $query = "SELECT (t.`skupina_vstupu` ), SUM(t.polozka) FROM kapko_tf2 t GROUP BY t.`skupina_vstupu` ORDER BY t.`skupina_vstupu`";
 
-            
-                        <?php  
-                        include 'config.php';
-                        $con = mysqli_connect("$localhost","$user","$password","$db");
+         $query_run = mysqli_query($con, $query);
 
-                        if(isset($_GET['start_price']) && isset($_GET['end_price']))
-                        {
-                            $startprice = $_GET['start_price'];
-                            $endprice = $_GET['end_price'];
+         if (mysqli_num_rows($query_run) > 0)
+         {
+             foreach($query_run as $row)
+             {
+             ?>
 
-                            $query = "SELECT * FROM kapko_vystupy_podniku WHERE predajna_cena BETWEEN $startprice AND $endprice ";
-                        }
-                        else
-                        {
-                            $query = "SELECT * FROM kapko_vystupy_podniku";
-                        }
-                        
-                        $query_run = mysqli_query($con, $query);
-
-                        if(mysqli_num_rows($query_run) > 0)
-                        {
-                            foreach($query_run as $items)
-                            {
-                                // 
-
-                                ?>
-
-                                <tr>
-                                    <td><?= $items['id_vystupu']; ?></td>
-                                    <td><?= $items['nazov_vystupu']; ?></td>
-                                    <td><?= $items['typ_vystupu']; ?></td>
-                                    <td><?= $items['merna_jednotka_vystupu']; ?></td>
-                                    <td><?= $items['predajna_cena']; ?></td>
-                                </tr>
-                                <?php
-
-
-
-
-                               
-                            }
-                        }
-                        else
-                        {
-                            echo "Nenájdený záznam";
-                        }
-                        ?>
-                        
-                   
-          </tbody>
-       
-</table>
-
-
-
+             <tr>
+                 <td><?= $row['skupina_vstupu']; ?></td>
+                 <td><?= $row['SUM(t.polozka)']; ?>€</td>
+             </tr>
+             <?php
+             }
+         }
+         else
+         {
+             echo "nie je tu ziadna tabulka";
+         }
+         
+        ?>
+        </tbody>
+        </table>
+<?php
+?>
 
           </div>
         </div>
@@ -199,17 +144,75 @@ https://templatemo.com/tm-573-eduwell
 
 
 
-  
-
-  
 
 
 
 
 
 
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+  <section>
+<img src="" alt="Tu bude obrazok grafu mesiac">
+</section>
+
+
+
+
+  <section class="page-heading">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="header-text">
+
+          <table class="table table-bordered" style="background-color: white;" style="text-align: center;">
+        <thead class="table-danger" style="text-align: center;">
+            <tr>
+                <th>Typ výstupu</th>
+                <th>Náklady</th>
+            </tr>
+        </thead>
+        <h2 style="text-align: center;">Tabuľka nákladov podľa typu výstupu</h2>
+        <tbody style="text-align: center;">
+
+
+        
+        
+        <?php
+         include 'config.php';
+         $con = mysqli_connect("$localhost","$user","$password","$db");
+
+         $query = "SELECT (t.`typ_vstupu`), SUM(t.polozka) FROM kapko_tf2 t GROUP BY t.`typ_vstupu` ORDER BY t.`typ_vstupu`";
+
+         $query_run = mysqli_query($con, $query);
+
+         if (mysqli_num_rows($query_run) > 0)
+         {
+             foreach($query_run as $row)
+             {
+             ?>
+
+             <tr>
+                 <td><?= $row['typ_vstupu']; ?></td>
+                 <td><?= $row['SUM(t.polozka)']; ?>€</td>
+             </tr>
+             <?php
+             }
+         }
+         else
+         {
+             echo "nie je tu ziadna tabulka";
+         }
+         
+        ?>
+        </tbody>
+        </table>
+<?php
+?>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
 

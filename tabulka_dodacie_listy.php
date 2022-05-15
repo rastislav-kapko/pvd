@@ -41,18 +41,18 @@ https://templatemo.com/tm-573-eduwell
               <div class="col-12">
                 <nav class="main-nav">
                   <!-- ***** Logo Start ***** -->
-                  <a href="index.html" class="logo">
+                  <a href="index.php" class="logo">
                       <img src="assets/images/templatemo-eduwell.png" alt="EduWell Template">
                   </a>
                   <!-- ***** Logo End ***** -->
                   <!-- ***** Menu Start ***** -->
                   <ul class="nav">
-                  <li class="scroll-to-section"><a href="#top" class="active">Úvod</a></li>
-                          <li class="scroll-to-section"><a href="#simple-cta">Kto sme</a></li>
-                          <li class="scroll-to-section"><a href="#services">Produkty</a></li>
-                          <li class="scroll-to-section"><a href="#testimonials">Recenzie</a></li> 
-                          <li class="scroll-to-section"><a href="#courses">Zadania</a></li>
-                          <li class="scroll-to-section"><a href="#contact-section">Kontakt</a></li> 
+                  <li><a href="index.php">Úvod</a></li>
+                          <li><a href="index.php">Kto sme</a></li>
+                          <li><a href="index.php">Produkty</a></li>
+                          <li><a href="index.php">Recenzie</a></li> 
+                          <li><a href="index.php">Zadania</a></li>
+                          <li><a href="index.php">Kontakt</a></li> 
                           <li class="has-sub">
                               <a href="javascript:void(0)">Tabuľky</a>
                               <ul class="sub-menu">
@@ -83,56 +83,112 @@ https://templatemo.com/tm-573-eduwell
         <div class="col-lg-12">
           <div class="header-text">
 
-          <table class="table table-bordered" style="background-color: white;" style="text-align: center;">
-        <thead class="table-danger" style="text-align: center;">
+
+
+          <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h4>Filtrovanie Dodacích listov</h4>
+                    </div>
+                    <div class="card-body">
+
+                        <form action="" method="GET">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="">Dodacie listy od</label>
+                                    <input type="date" name="start_price" value="<?php if(isset($_GET['start_price'])){echo $_GET['start_price']; }else{echo "0";} ?>" class="form-control">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="">Dodacie listy do</label>
+                                    <input type="date" name="end_price" value="<?php if(isset($_GET['end_price'])){echo $_GET['end_price']; }else{echo "10";} ?>" class="form-control">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="">Klikni na tlačidlo</label> <br/>
+                                    <button type="submit" class="btn btn-primary px-4">Filtrovať</button>
+                                </div>
+                            </div>
+                            
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+<section><br></section>
+
+<table class="table table-bordered" style="background-color: white;" style="text-align: center;">
+        <thead class="table-secondary" style="text-align: center;">
             <tr>
-                <th>ID dodacieho listu</th>
-                <th>ID partnera</th>
+                <th>ID Dodacieho listu</th>
+                <th>ID Partnera</th>
                 <th>Dátum objednávky</th>
                 <th>Dátum dodania</th>
-                <th>Cena</th>
+                <th>Cena Dodacieho listu</th>
             </tr>
         </thead>
         <h2 style="text-align: center;">Tabuľka dodacích listov</h2>
         <tbody style="text-align: center;">
 
 
-        
-        
-        <?php
-         include 'config.php';
-         $con = mysqli_connect("$localhost","$user","$password","$db");
 
-         $query = "Select * FROM kapko_dodaci_list as t GROUP BY id_dod ORDER BY id_dod";
 
-         $query_run = mysqli_query($con, $query);
+            
+                        <?php  
+                        include 'config.php';
+                        $con = mysqli_connect("$localhost","$user","$password","$db");
 
-         if (mysqli_num_rows($query_run) > 0)
-         {
-             foreach($query_run as $row)
-             {
-             ?>
+                        if(isset($_GET['start_price']) && isset($_GET['end_price']))
+                        {
+                            $startprice = $_GET['start_price'];
+                            $endprice = $_GET['end_price'];
 
-             <tr>
-                 <td><?= $row['id_dod']; ?></td>
-                 <td><?= $row['id_part']; ?></td>
-                 <td><?= $row['datum_obj']; ?></td>
-                 <td><?= $row['datum_dod']; ?></td>
-                 <td><?= $row['cena_dl']; ?></td>
-             </tr>
-             <?php
-             }
-         }
-         else
-         {
-             echo "nie je tu ziadna tabulka";
-         }
-         
-        ?>
-        </tbody>
-        </table>
-<?php
-?>
+                            $query = "SELECT * FROM kapko_dodaci_list WHERE datum_obj BETWEEN '$startprice' AND '$endprice' ";
+                        }
+                        else
+                        {
+                            $query = "SELECT * FROM kapko_dodaci_list";
+                        }
+                        
+                        $query_run = mysqli_query($con, $query);
+
+                        if(mysqli_num_rows($query_run) > 0)
+                        {
+                            foreach($query_run as $items)
+                            {
+                                // 
+
+                                ?>
+
+                                <tr>
+                                    <td><?= $items['id_dod']; ?></td>
+                                    <td><?= $items['id_part']; ?></td>
+                                    <td><?= $items['datum_obj']; ?></td>
+                                    <td><?= $items['datum_dod']; ?></td>
+                                    <td><?= $items['cena_dl']; ?></td>
+                                </tr>
+                                <?php
+
+
+
+
+                               
+                            }
+                        }
+                        else
+                        {
+                            echo "Nenájdený záznam";
+                        }
+                        ?>
+                        
+                   
+          </tbody>
+       
+</table>
+
+
+
 
           </div>
         </div>
@@ -141,58 +197,27 @@ https://templatemo.com/tm-573-eduwell
   </section>
 
 
-  <section class="contact-us our-office">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="left-info">
-            <div class="section-heading">
-              <h6>Our Office</h6>
-              <h4>Get closer to <em>EduWell</em></h4>
-            </div>
-            <p>Trust fund nocore broklyn humblebrag mustache
-              pork kitsch, bicycle rights hexagon schlitz keytar palo is
-              santo drinking vinegar fam ramps. <br><br>Four dollar toast and
-              edison bulb vinyl, listicle hashtag pug scenester typewrit
-              er yuccie street artboard or whatever to fill place.</p>
-            <ul>
-              <li>- Selfies you probably haven't heard of them.</li>
-              <li>- Tousled cold-pressed chicharrones yuccie.</li>
-              <li>- Pabst iPhone chartreuse shabby chic tumeric.</li>
-              <li>- Scenester normcore mumblecore snackwave.</li>
-            </ul>
-            <div class="main-button-gradient">
-              <a href="our-services.html">Our Services</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-8">
-          <div id="video">
-            <div class="thumb">
-              <img src="assets/images/video-thumb.jpg" alt="">
-              <div class="play-button">
-                <a rel="nofollow" href="https://www.youtube.com/templatemo" target="_blank"><i class="fa fa-play"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-12">
-          <ul class="social-icons">
-            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-            <li><a href="#"><i class="fa fa-rss"></i></a></li>
-            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-          </ul>
-        </div>
-        <div class="col-lg-12">
-          <p class="copyright">Copyright © 2022 EduWell Co., Ltd. All Rights Reserved. 
-          
-          <br>Design: <a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a></p>
-        </div>
-      </div>
-    </div>
-  </section>
+
+
+  
+
+  
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+
+
+
+
 
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->

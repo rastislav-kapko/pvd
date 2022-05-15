@@ -47,7 +47,7 @@ https://templatemo.com/tm-573-eduwell
                   <!-- ***** Logo End ***** -->
                   <!-- ***** Menu Start ***** -->
                   <ul class="nav">
-                          <li><a href="index.php">Úvod</a></li>
+                  <li><a href="index.php">Úvod</a></li>
                           <li><a href="index.php">Kto sme</a></li>
                           <li><a href="index.php">Produkty</a></li>
                           <li><a href="index.php">Recenzie</a></li> 
@@ -77,118 +77,77 @@ https://templatemo.com/tm-573-eduwell
   </header>
   <!-- ***** Header Area End ***** -->
 
+<section>
+<img src="" alt="Tu bude obrazok grafu rok">
+</section>
+
+
+
+
   <section class="page-heading">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
           <div class="header-text">
 
-
-
-          <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card mt-4">
-                    <div class="card-header">
-                        <h4>Filtrovanie výrobkov</h4>
-                    </div>
-                    <div class="card-body">
-
-                        <form action="" method="GET">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <label for="">Cena od</label>
-                                    <input type="text" name="start_price" value="<?php if(isset($_GET['start_price'])){echo $_GET['start_price']; }else{echo "0";} ?>" class="form-control">
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="">Cena do</label>
-                                    <input type="text" name="end_price" value="<?php if(isset($_GET['end_price'])){echo $_GET['end_price']; }else{echo "10";} ?>" class="form-control">
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="">Klikni na tlačidlo</label> <br/>
-                                    <button type="submit" class="btn btn-primary px-4">Filtrovať</button>
-                                </div>
-                            </div>
-                            
-                        </form>
-
-                    </div>
-                </div>
-            </div>
-
-<section><br></section>
-
-<table class="table table-bordered" style="background-color: white;" style="text-align: center;">
-        <thead class="table-secondary" style="text-align: center;">
+          <table class="table table-bordered" style="background-color: white;" style="text-align: center;">
+        <thead class="table-danger" style="text-align: center;">
             <tr>
-                <th>ID Produktu</th>
-                <th>Názov produktu</th>
-                <th>Typ produktu</th>
-                <th>Merná jednotka</th>
-                <th>Predajná cena</th>
+                <th>ID Skupiny</th>
+                <th>2016</th>
+                <th>2017</th>
+                <th>2018</th>
+                <th>2019</th>
+                <th>2020</th>
+                <th>2021</th>
+                <th>2022</th>
+                <th>Spolu</th>
             </tr>
         </thead>
-        <h2 style="text-align: center;">Tabuľka výrobkov</h2>
+        <h2 style="text-align: center;">Kontingenčná tabuľka príjmov podľa skupín a rokov</h2>
         <tbody style="text-align: center;">
 
 
+        
+        
+        <?php
+         include 'config.php';
+         $con = mysqli_connect("$localhost","$user","$password","$db");
 
+         $query = "SELECT ifnull(t.skupina_vystupu,'spolu')id_skupiny , sum(IF(t.rok=2016,t.polozka,0)) as '2016', sum(IF(t.rok=2017,t.polozka,0)) as '2017' , sum(IF(t.rok=2018,t.polozka,0)) as '2018' , sum(IF(t.rok=2019,t.polozka,0)) as '2019' , sum(IF(t.rok=2020,t.polozka,0)) as '2020' , sum(IF(t.rok=2021,t.polozka,0)) as '2021', sum(IF(t.rok=2022,t.polozka,0)) as '2022', sum(t.polozka) as 'spolu' FROM kapko_tf3 t group by t.skupina_vystupu WITH ROLLUP";
 
-            
-                        <?php  
-                        include 'config.php';
-                        $con = mysqli_connect("$localhost","$user","$password","$db");
+         $query_run = mysqli_query($con, $query);
 
-                        if(isset($_GET['start_price']) && isset($_GET['end_price']))
-                        {
-                            $startprice = $_GET['start_price'];
-                            $endprice = $_GET['end_price'];
+         if (mysqli_num_rows($query_run) > 0)
+         {
+             foreach($query_run as $row)
+             {
+             ?>
 
-                            $query = "SELECT * FROM kapko_vystupy_podniku WHERE predajna_cena BETWEEN $startprice AND $endprice ";
-                        }
-                        else
-                        {
-                            $query = "SELECT * FROM kapko_vystupy_podniku";
-                        }
-                        
-                        $query_run = mysqli_query($con, $query);
-
-                        if(mysqli_num_rows($query_run) > 0)
-                        {
-                            foreach($query_run as $items)
-                            {
-                                // 
-
-                                ?>
-
-                                <tr>
-                                    <td><?= $items['id_vystupu']; ?></td>
-                                    <td><?= $items['nazov_vystupu']; ?></td>
-                                    <td><?= $items['typ_vystupu']; ?></td>
-                                    <td><?= $items['merna_jednotka_vystupu']; ?></td>
-                                    <td><?= $items['predajna_cena']; ?></td>
-                                </tr>
-                                <?php
-
-
-
-
-                               
-                            }
-                        }
-                        else
-                        {
-                            echo "Nenájdený záznam";
-                        }
-                        ?>
-                        
-                   
-          </tbody>
-       
-</table>
-
-
-
+             <tr>
+                 <td><?= $row['id_skupiny']; ?></td>
+                 <td><?= $row['2016']; ?>€</td>
+                 <td><?= $row['2017']; ?>€</td>
+                 <td><?= $row['2018']; ?>€</td>
+                 <td><?= $row['2019']; ?>€</td>
+                 <td><?= $row['2020']; ?>€</td>
+                 <td><?= $row['2021']; ?>€</td>
+                 <td><?= $row['2022']; ?>€</td>
+                 <td><?= $row['spolu']; ?>€</td>
+             </tr>
+             <?php
+             }
+         }
+         else
+         {
+             echo "nie je tu ziadna tabulka";
+         }
+         
+        ?>
+        </tbody>
+        </table>
+<?php
+?>
 
           </div>
         </div>
@@ -199,17 +158,110 @@ https://templatemo.com/tm-573-eduwell
 
 
 
-  
-
-  
 
 
 
 
 
 
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+  <section>
+<img src="" alt="Tu bude obrazok grafu mesiac">
+</section>
+
+
+
+
+  <section class="page-heading">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="header-text">
+
+          <table class="table table-bordered" style="background-color: white;" style="text-align: center;">
+        <thead class="table-danger" style="text-align: center;">
+            <tr>
+                <th>VUC</th>
+                <th>Január</th>
+                <th>Február</th>
+                <th>Marec</th>
+                <th>Apríl</th>
+                <th>Máj</th>
+                <th>Jún</th>
+                <th>Jul</th>
+                <th>August</th>
+                <th>September</th>
+                <th>Október</th>
+                <th>November</th>
+                <th>December</th>
+            </tr>
+        </thead>
+        <h2 style="text-align: center;">Kontingenčná tabuľka príjmov podľa vúc a mesiacov v roku 2021</h2>
+        <tbody style="text-align: center;">
+
+
+        
+        
+        <?php
+         include 'config.php';
+         $con = mysqli_connect("$localhost","$user","$password","$db");
+
+         $query = "SELECT ifnull(t.id_vuc,'vuc')VUC , 
+         sum(IF(t.mesiac=1,t.polozka,0)) as 'januar', 
+         sum(IF(t.mesiac=2,t.polozka,0)) as 'februar' , 
+         sum(IF(t.mesiac=3,t.polozka,0)) as 'marec' , 
+         sum(IF(t.mesiac=4,t.polozka,0)) as 'april' , 
+         sum(IF(t.mesiac=5,t.polozka,0)) as 'maj' , 
+         sum(IF(t.mesiac=6,t.polozka,0)) as 'jun', 
+         sum(IF(t.mesiac=7,t.polozka,0)) as 'jul', 
+         sum(IF(t.mesiac=8,t.polozka,0)) as 'august', 
+         sum(IF(t.mesiac=9,t.polozka,0)) as 'september', 
+         sum(IF(t.mesiac=10,t.polozka,0)) as 'oktober', 
+         sum(IF(t.mesiac=11,t.polozka,0)) as 'november', 
+         sum(IF(t.mesiac=12,t.polozka,0)) as 'december', 
+         sum(t.polozka) as 'spolu' FROM kapko_tf3 t where rok=2021 group by t.id_vuc WITH ROLLUP";
+
+         $query_run = mysqli_query($con, $query);
+
+         if (mysqli_num_rows($query_run) > 0)
+         {
+             foreach($query_run as $row)
+             {
+             ?>
+
+             <tr>
+                 <td><?= $row['VUC']; ?></td>
+                 <td><?= $row['januar']; ?>€</td>
+                 <td><?= $row['februar']; ?>€</td>
+                 <td><?= $row['marec']; ?>€</td>
+                 <td><?= $row['april']; ?>€</td>
+                 <td><?= $row['maj']; ?>€</td>
+                 <td><?= $row['jun']; ?>€</td>
+                 <td><?= $row['jul']; ?>€</td>
+                 <td><?= $row['august']; ?>€</td>
+                 <td><?= $row['september']; ?>€</td>
+                 <td><?= $row['oktober']; ?>€</td>
+                 <td><?= $row['november']; ?>€</td>
+                 <td><?= $row['december']; ?>€</td>
+             </tr>
+             <?php
+             }
+         }
+         else
+         {
+             echo "nie je tu ziadna tabulka";
+         }
+         
+        ?>
+        </tbody>
+        </table>
+<?php
+?>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
 
