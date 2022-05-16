@@ -61,7 +61,7 @@ https://templatemo.com/tm-573-eduwell
                                   <li><a href="tabulka_dodacie_listy.php">dodacích listov</a></li>
                                   <li><a href="tabulka_prijmov.php">príjmov</a></li>
                                   <li><a href="tabulka_nakladov.php">nákladov</a></li>
-                                  <li><a href="tabulka_zisku.php">ziskov</a></li>
+                                  <li><a href="tabulka_poctov.php">počtov</a></li>
                         </ul>
                     </li>
                     
@@ -77,7 +77,14 @@ https://templatemo.com/tm-573-eduwell
   </header>
   <!-- ***** Header Area End ***** -->
 
-  <section class="page-heading">
+<section>
+<img src="" alt="Tu bude obrazok grafu rok">
+</section>
+
+
+
+
+<section class="page-heading">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
@@ -87,10 +94,10 @@ https://templatemo.com/tm-573-eduwell
         <thead class="table-danger" style="text-align: center;">
             <tr>
                 <th>Rok</th>
-                <th>Príjem</th>
+                <th>Množstvo</th>
             </tr>
         </thead>
-        <h2 style="text-align: center;">Tabuľka faktov č.3</h2>
+        <h2 style="text-align: center;">Tabuľka počtov podľa rokov</h2>
         <tbody style="text-align: center;">
 
 
@@ -100,7 +107,7 @@ https://templatemo.com/tm-573-eduwell
          include 'config.php';
          $con = mysqli_connect("$localhost","$user","$password","$db");
 
-         $query = "Select (t.rok), SUM(t.polozka) FROM kapko_tf3 as t GROUP BY t.rok ORDER BY t.rok";
+         $query = "SELECT t.rok,SUM(t.mnozstvo) FROM kapko_tf6 t GROUP BY t.rok ORDER BY t.rok";
 
          $query_run = mysqli_query($con, $query);
 
@@ -112,7 +119,7 @@ https://templatemo.com/tm-573-eduwell
 
              <tr>
                  <td><?= $row['rok']; ?></td>
-                 <td><?= $row['SUM(t.polozka)']; ?>€</td>
+                 <td><?= $row['SUM(t.mnozstvo)']; ?>ks</td>
              </tr>
              <?php
              }
@@ -133,6 +140,168 @@ https://templatemo.com/tm-573-eduwell
       </div>
     </div>
   </section>
+
+
+
+
+
+
+  
+
+
+
+  <section>
+<img src="" alt="Tu bude obrazok grafu mesiac">
+</section>
+
+
+
+
+  <section class="page-heading">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="header-text">
+
+          <table class="table table-bordered" style="background-color: white;" style="text-align: center;">
+        <thead class="table-danger" style="text-align: center;">
+            <tr>
+                <th>VÚC</th>
+                <th>Množstvo</th>
+            </tr>
+        </thead>
+        <h2 style="text-align: center;">Tabuľka počtov podľa vúc</h2>
+        <tbody style="text-align: center;">
+
+
+        
+        
+        <?php
+         include 'config.php';
+         $con = mysqli_connect("$localhost","$user","$password","$db");
+
+         $query = "SELECT t.id_vuc,SUM(t.mnozstvo) FROM kapko_tf3 t GROUP BY t.id_vuc ORDER BY t.id_vuc";
+
+         $query_run = mysqli_query($con, $query);
+
+         if (mysqli_num_rows($query_run) > 0)
+         {
+             foreach($query_run as $row)
+             {
+             ?>
+
+             <tr>
+                 <td><?= $row['id_vuc']; ?></td>
+                 <td><?= $row['SUM(t.mnozstvo)']; ?>ks</td>
+             </tr>
+             <?php
+             }
+         }
+         else
+         {
+             echo "nie je tu ziadna tabulka";
+         }
+         
+        ?>
+        </tbody>
+        </table>
+<?php
+?>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+  <section>
+<img src="" alt="Tu bude obrazok grafu rok">
+</section>
+
+
+
+
+<section class="page-heading">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="header-text">
+
+          <table class="table table-bordered" style="background-color: white;" style="text-align: center;">
+        <thead class="table-danger" style="text-align: center;">
+            <tr>
+                <th>VÚC</th>
+                <th>2016</th>
+                <th>2017</th>
+                <th>2018</th>
+                <th>2019</th>
+                <th>2020</th>
+                <th>2021</th>
+                <th>2022</th>
+            </tr>
+        </thead>
+        <h2 style="text-align: center;">Tabuľka počtov podľa vúc a rokov</h2>
+        <tbody style="text-align: center;">
+
+
+        
+        
+        <?php
+         include 'config.php';
+         $con = mysqli_connect("$localhost","$user","$password","$db");
+
+         $query = "SELECT ifnull(t.id_vuc,'spolu')id_vuc , 
+         sum(IF(t.rok=2016,t.mnozstvo,0)) as '2016', 
+         sum(IF(t.rok=2017,t.mnozstvo,0)) as '2017' , 
+         sum(IF(t.rok=2018,t.mnozstvo,0)) as '2018' , 
+         sum(IF(t.rok=2019,t.mnozstvo,0)) as '2019' , 
+         sum(IF(t.rok=2020,t.mnozstvo,0)) as '2020' , 
+         sum(IF(t.rok=2021,t.mnozstvo,0)) as '2021', 
+         sum(IF(t.rok=2022,t.mnozstvo,0)) as '2022', 
+         sum(t.mnozstvo) as 'spolu' FROM kapko_tf3 t group by t.id_vuc WITH ROLLUP";
+
+         $query_run = mysqli_query($con, $query);
+
+         if (mysqli_num_rows($query_run) > 0)
+         {
+             foreach($query_run as $row)
+             {
+             ?>
+
+             <tr>
+                 <td><?= $row['id_vuc']; ?></td>
+                 <td><?= $row['2016']; ?>ks</td>
+                 <td><?= $row['2017']; ?>ks</td>
+                 <td><?= $row['2018']; ?>ks</td>
+                 <td><?= $row['2019']; ?>ks</td>
+                 <td><?= $row['2020']; ?>ks</td>
+                 <td><?= $row['2021']; ?>ks</td>
+                 <td><?= $row['2022']; ?>ks</td>
+             </tr>
+             <?php
+             }
+         }
+         else
+         {
+             echo "nie je tu ziadna tabulka";
+         }
+         
+        ?>
+        </tbody>
+        </table>
+<?php
+?>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 
 
   <!-- Scripts -->

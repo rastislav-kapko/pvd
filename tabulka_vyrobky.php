@@ -61,7 +61,7 @@ https://templatemo.com/tm-573-eduwell
                                   <li><a href="tabulka_dodacie_listy.php">dodacích listov</a></li>
                                   <li><a href="tabulka_prijmov.php">príjmov</a></li>
                                   <li><a href="tabulka_nakladov.php">nákladov</a></li>
-                                  <li><a href="tabulka_zisku.php">ziskov</a></li>
+                                  <li><a href="tabulka_poctov.php">počtov</a></li>
                         </ul>
                     </li>
                     

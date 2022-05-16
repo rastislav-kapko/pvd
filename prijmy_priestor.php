@@ -61,7 +61,7 @@ https://templatemo.com/tm-573-eduwell
                                   <li><a href="tabulka_dodacie_listy.php">dodacích listov</a></li>
                                   <li><a href="tabulka_prijmov.php">príjmov</a></li>
                                   <li><a href="tabulka_nakladov.php">nákladov</a></li>
-                                  <li><a href="tabulka_zisku.php">ziskov</a></li>
+                                  <li><a href="tabulka_poctov.php">počtov</a></li>
                         </ul>
                     </li>
                     
@@ -107,7 +107,7 @@ https://templatemo.com/tm-573-eduwell
          include 'config.php';
          $con = mysqli_connect("$localhost","$user","$password","$db");
 
-         $query = "SELECT (t.`id_vuc` ), SUM(t.polozka) FROM kapko_tf3 t GROUP BY t.`id_vuc` ORDER BY t.`id_vuc`";
+         $query = "SELECT (t.`id_vuc` ), SUM(t.polozka) FROM kapko_tf6 t GROUP BY t.`id_vuc` ORDER BY t.`id_vuc`";
 
          $query_run = mysqli_query($con, $query);
 
@@ -180,7 +180,7 @@ https://templatemo.com/tm-573-eduwell
          include 'config.php';
          $con = mysqli_connect("$localhost","$user","$password","$db");
 
-         $query = "SELECT (t.`id_okr` ), SUM(t.polozka) FROM kapko_tf3 t GROUP BY t.`id_okr` ORDER BY t.`id_okr`";
+         $query = "SELECT (t.`id_okr` ), SUM(t.polozka) FROM kapko_tf6 t GROUP BY t.`id_okr` ORDER BY t.`id_okr`";
 
          $query_run = mysqli_query($con, $query);
 

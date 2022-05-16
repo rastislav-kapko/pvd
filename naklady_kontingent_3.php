@@ -61,7 +61,7 @@ https://templatemo.com/tm-573-eduwell
                                   <li><a href="tabulka_dodacie_listy.php">dodacích listov</a></li>
                                   <li><a href="tabulka_prijmov.php">príjmov</a></li>
                                   <li><a href="tabulka_nakladov.php">nákladov</a></li>
-                                  <li><a href="tabulka_zisku.php">ziskov</a></li>
+                                  <li><a href="tabulka_poctov.php">počtov</a></li>
                         </ul>
                     </li>
                     
@@ -110,7 +110,7 @@ https://templatemo.com/tm-573-eduwell
          include 'config.php';
          $con = mysqli_connect("$localhost","$user","$password","$db");
 
-         $query = "SELECT ifnull(t.rok,'spolu')Rok , sum(IF(t.id_vuc='BA',t.polozka,0)) as 'BA' , sum(IF(t.id_vuc='TT',t.polozka,0)) as 'TT' , sum(IF(t.id_vuc='TN',t.polozka,0)) as 'TN' , sum(IF(t.id_vuc='NR',t.polozka,0)) as 'NR' ,sum(t.polozka) as 'spolu' FROM kapko_tf2 t group by t.rok";
+         $query = "SELECT ifnull(t.rok,'spolu')Rok , sum(IF(t.id_vuc='BA',t.polozka,0)) as 'BA' , sum(IF(t.id_vuc='TT',t.polozka,0)) as 'TT' , sum(IF(t.id_vuc='TN',t.polozka,0)) as 'TN' , sum(IF(t.id_vuc='NR',t.polozka,0)) as 'NR' ,sum(t.polozka) as 'spolu' FROM kapko_tf5 t group by t.rok";
 
          $query_run = mysqli_query($con, $query);
 
@@ -200,7 +200,7 @@ https://templatemo.com/tm-573-eduwell
          sum(IF(t.rok=2020,t.polozka,0)) as '2020' , 
          sum(IF(t.rok=2021,t.polozka,0)) as '2021',
          sum(IF(t.rok=2022,t.polozka,0)) as '2022',
-         sum(t.polozka) as 'spolu' FROM kapko_tf2 t group by t.skupina_vstupu WITH ROLLUP";
+         sum(t.polozka) as 'spolu' FROM kapko_tf5 t group by t.skupina_vstupu WITH ROLLUP";
 
          $query_run = mysqli_query($con, $query);
 
@@ -284,7 +284,7 @@ https://templatemo.com/tm-573-eduwell
          sum(IF(t.id_vuc='TT',t.polozka,0)) as 'TT' ,
          sum(IF(t.id_vuc='TN',t.polozka,0)) as 'TN' ,
          sum(IF(t.id_vuc='NR',t.polozka,0)) as 'NR' ,
-         sum(t.polozka) as 'spolu' FROM kapko_tf2 t group by t.skupina_vstupu WITH ROLLUP";
+         sum(t.polozka) as 'spolu' FROM kapko_tf5 t group by t.skupina_vstupu WITH ROLLUP";
 
          $query_run = mysqli_query($con, $query);
 

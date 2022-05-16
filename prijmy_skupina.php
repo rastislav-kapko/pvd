@@ -61,7 +61,7 @@ https://templatemo.com/tm-573-eduwell
                                   <li><a href="tabulka_dodacie_listy.php">dodacích listov</a></li>
                                   <li><a href="tabulka_prijmov.php">príjmov</a></li>
                                   <li><a href="tabulka_nakladov.php">nákladov</a></li>
-                                  <li><a href="tabulka_zisku.php">ziskov</a></li>
+                                  <li><a href="tabulka_poctov.php">počtov</a></li>
                         </ul>
                     </li>
                     
@@ -77,9 +77,7 @@ https://templatemo.com/tm-573-eduwell
   </header>
   <!-- ***** Header Area End ***** -->
 
-<section>
-<img src="" alt="Tu bude obrazok grafu rok">
-</section>
+
 
 
 
@@ -89,6 +87,9 @@ https://templatemo.com/tm-573-eduwell
       <div class="row">
         <div class="col-lg-12">
           <div class="header-text">
+
+
+          <img src="tabulka_prijem_skup_vystup.png" alt="Tu bude obrazok grafu rok">
 
           <table class="table table-bordered" style="background-color: white;" style="text-align: center;">
         <thead class="table-danger" style="text-align: center;">
@@ -107,7 +108,7 @@ https://templatemo.com/tm-573-eduwell
          include 'config.php';
          $con = mysqli_connect("$localhost","$user","$password","$db");
 
-         $query = "SELECT (t.`skupina_vystupu` ), SUM(t.polozka) FROM kapko_tf3 t GROUP BY t.`skupina_vystupu` ORDER BY t.`skupina_vystupu`";
+         $query = "SELECT (t.`skupina_vystupu` ), SUM(t.polozka) FROM kapko_tf6 t GROUP BY t.`skupina_vystupu` ORDER BY t.`skupina_vystupu`";
 
          $query_run = mysqli_query($con, $query);
 
@@ -148,20 +149,13 @@ https://templatemo.com/tm-573-eduwell
 
 
 
-
-
-  <section>
-<img src="" alt="Tu bude obrazok grafu mesiac">
-</section>
-
-
-
-
   <section class="page-heading">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
           <div class="header-text">
+
+          <img src="tabulka_prijem_vystup.png" alt="Tu bude obrazok grafu mesiac">
 
           <table class="table table-bordered" style="background-color: white;" style="text-align: center;">
         <thead class="table-danger" style="text-align: center;">
@@ -180,7 +174,7 @@ https://templatemo.com/tm-573-eduwell
          include 'config.php';
          $con = mysqli_connect("$localhost","$user","$password","$db");
 
-         $query = "SELECT (t.`typ_vystupu`), SUM(t.polozka) FROM kapko_tf3 t GROUP BY t.`typ_vystupu` ORDER BY t.`typ_vystupu`";
+         $query = "SELECT (t.`typ_vystupu`), SUM(t.polozka) FROM kapko_tf6 t GROUP BY t.`typ_vystupu` ORDER BY t.`typ_vystupu`";
 
          $query_run = mysqli_query($con, $query);
 

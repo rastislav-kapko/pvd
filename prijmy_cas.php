@@ -61,7 +61,7 @@ https://templatemo.com/tm-573-eduwell
                                   <li><a href="tabulka_dodacie_listy.php">dodacích listov</a></li>
                                   <li><a href="tabulka_prijmov.php">príjmov</a></li>
                                   <li><a href="tabulka_nakladov.php">nákladov</a></li>
-                                  <li><a href="tabulka_zisku.php">ziskov</a></li>
+                                  <li><a href="tabulka_poctov.php">počtov</a></li>
                         </ul>
                     </li>
                     
@@ -77,9 +77,6 @@ https://templatemo.com/tm-573-eduwell
   </header>
   <!-- ***** Header Area End ***** -->
 
-<section>
-<img src="" alt="Tu bude obrazok grafu rok">
-</section>
 
 
 
@@ -89,6 +86,8 @@ https://templatemo.com/tm-573-eduwell
       <div class="row">
         <div class="col-lg-12">
           <div class="header-text">
+
+          <img src="tabulka_prijem_cas.png" alt="Tu bude obrazok grafu rok">
 
           <table class="table table-bordered" style="background-color: white;" style="text-align: center;">
         <thead class="table-danger" style="text-align: center;">
@@ -107,7 +106,7 @@ https://templatemo.com/tm-573-eduwell
          include 'config.php';
          $con = mysqli_connect("$localhost","$user","$password","$db");
 
-         $query = "SELECT (t.rok ), SUM(t.polozka) FROM kapko_tf3 t GROUP BY t.rok ORDER BY t.rok";
+         $query = "SELECT (t.rok ), SUM(t.polozka) FROM kapko_tf6 t GROUP BY t.rok ORDER BY t.rok";
 
          $query_run = mysqli_query($con, $query);
 
@@ -150,11 +149,6 @@ https://templatemo.com/tm-573-eduwell
 
 
 
-  <section>
-<img src="" alt="Tu bude obrazok grafu mesiac">
-</section>
-
-
 
 
   <section class="page-heading">
@@ -162,6 +156,8 @@ https://templatemo.com/tm-573-eduwell
       <div class="row">
         <div class="col-lg-12">
           <div class="header-text">
+
+          <img src="tabulka_prijem_cas_mesiac.png" alt="Tu bude obrazok grafu mesiac">
 
           <table class="table table-bordered" style="background-color: white;" style="text-align: center;">
         <thead class="table-danger" style="text-align: center;">
@@ -180,7 +176,7 @@ https://templatemo.com/tm-573-eduwell
          include 'config.php';
          $con = mysqli_connect("$localhost","$user","$password","$db");
 
-         $query = "SELECT (t.mesiac), SUM(t.polozka) FROM kapko_tf3 t where rok = 2021 GROUP BY t.mesiac ORDER BY t.mesiac";
+         $query = "SELECT (t.mesiac), SUM(t.polozka) FROM kapko_tf6 t where rok = 2021 GROUP BY t.mesiac ORDER BY t.mesiac";
 
          $query_run = mysqli_query($con, $query);
 
@@ -220,9 +216,6 @@ https://templatemo.com/tm-573-eduwell
 
 
 
-  <section>
-<img src="" alt="Tu bude obrazok grafu den">
-</section>
 
 
 
@@ -233,6 +226,8 @@ https://templatemo.com/tm-573-eduwell
         <div class="col-lg-12">
           <div class="header-text">
 
+          <img src="tabulka_prijem_cas_dni.png" alt="Tu bude obrazok grafu den">
+
           <table class="table table-bordered" style="background-color: white;" style="text-align: center;">
         <thead class="table-danger" style="text-align: center;">
             <tr>
@@ -240,7 +235,7 @@ https://templatemo.com/tm-573-eduwell
                 <th>Príjem</th>
             </tr>
         </thead>
-        <h2 style="text-align: center;">Tabuľka príjmov podľa času - dni v decembri v roku 2021</h2>
+        <h2 style="text-align: center;">Tabuľka príjmov podľa času - dni v juni v roku 2021</h2>
         <tbody style="text-align: center;">
 
 
@@ -250,7 +245,7 @@ https://templatemo.com/tm-573-eduwell
          include 'config.php';
          $con = mysqli_connect("$localhost","$user","$password","$db");
 
-         $query = "SELECT (t.den ), SUM(t.polozka) FROM kapko_tf3 t where mesiac = 12 AND rok = 2021 GROUP BY t.den ORDER BY t.den";
+         $query = "SELECT (t.den ), SUM(t.polozka) FROM kapko_tf6 t where mesiac = 6 AND rok = 2021 GROUP BY t.den ORDER BY t.den";
 
          $query_run = mysqli_query($con, $query);
 

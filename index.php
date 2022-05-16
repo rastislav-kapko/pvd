@@ -60,7 +60,7 @@ https://templatemo.com/tm-573-eduwell
                                   <li><a href="tabulka_dodacie_listy.php">dodacích listov</a></li>
                                   <li><a href="tabulka_prijmov.php">príjmov</a></li>
                                   <li><a href="tabulka_nakladov.php">nákladov</a></li>
-                                  <li><a href="tabulka_zisku.php">ziskov</a></li>
+                                  <li><a href="tabulka_poctov.php">počtov</a></li>
                               </ul>
                           </li>
                           
@@ -446,7 +446,7 @@ https://templatemo.com/tm-573-eduwell
           </div>
         </div>
         <div class="col-lg-4">
-          <form id="contact" action="" method="post">
+          <!--<form id="contact" action="" method="post">
             <div class="row">
               <div class="col-lg-12">
                 <div class="section-heading">
@@ -476,7 +476,7 @@ https://templatemo.com/tm-573-eduwell
                 </fieldset>
               </div>
             </div>
-          </form>
+          </form>-->
         </div>
         <div class="col-lg-12">
           <ul class="social-icons">

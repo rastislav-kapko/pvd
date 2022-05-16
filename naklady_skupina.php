@@ -61,7 +61,7 @@ https://templatemo.com/tm-573-eduwell
                                   <li><a href="tabulka_dodacie_listy.php">dodacích listov</a></li>
                                   <li><a href="tabulka_prijmov.php">príjmov</a></li>
                                   <li><a href="tabulka_nakladov.php">nákladov</a></li>
-                                  <li><a href="tabulka_zisku.php">ziskov</a></li>
+                                  <li><a href="tabulka_poctov.php">počtov</a></li>
                         </ul>
                     </li>
                     
@@ -107,7 +107,7 @@ https://templatemo.com/tm-573-eduwell
          include 'config.php';
          $con = mysqli_connect("$localhost","$user","$password","$db");
 
-         $query = "SELECT (t.`skupina_vstupu` ), SUM(t.polozka) FROM kapko_tf2 t GROUP BY t.`skupina_vstupu` ORDER BY t.`skupina_vstupu`";
+         $query = "SELECT (t.`skupina_vstupu` ), SUM(t.polozka) FROM kapko_tf5 t GROUP BY t.`skupina_vstupu` ORDER BY t.`skupina_vstupu`";
 
          $query_run = mysqli_query($con, $query);
 
@@ -180,7 +180,7 @@ https://templatemo.com/tm-573-eduwell
          include 'config.php';
          $con = mysqli_connect("$localhost","$user","$password","$db");
 
-         $query = "SELECT (t.`typ_vstupu`), SUM(t.polozka) FROM kapko_tf2 t GROUP BY t.`typ_vstupu` ORDER BY t.`typ_vstupu`";
+         $query = "SELECT (t.`typ_vstupu`), SUM(t.polozka) FROM kapko_tf5 t GROUP BY t.`typ_vstupu` ORDER BY t.`typ_vstupu`";
 
          $query_run = mysqli_query($con, $query);
 

@@ -61,7 +61,7 @@ https://templatemo.com/tm-573-eduwell
                                   <li><a href="tabulka_dodacie_listy.php">dodacích listov</a></li>
                                   <li><a href="tabulka_prijmov.php">príjmov</a></li>
                                   <li><a href="tabulka_nakladov.php">nákladov</a></li>
-                                  <li><a href="tabulka_zisku.php">ziskov</a></li>
+                                  <li><a href="tabulka_poctov.php">počtov</a></li>
                         </ul>
                     </li>
                     
@@ -122,7 +122,7 @@ https://templatemo.com/tm-573-eduwell
          sum(IF(t.rok=2020,t.polozka,0)) as '2020' , 
          sum(IF(t.rok=2021,t.polozka,0)) as '2021', 
          sum(IF(t.rok=2022,t.polozka,0)) as '2022', 
-         sum(t.polozka) as 'spolu' FROM kapko_tf2 t group by t.skupina_vstupu WITH ROLLUP";
+         sum(t.polozka) as 'spolu' FROM kapko_tf5 t group by t.skupina_vstupu WITH ROLLUP";
 
          $query_run = mysqli_query($con, $query);
 
@@ -226,7 +226,7 @@ https://templatemo.com/tm-573-eduwell
          sum(IF(t.mesiac=10,t.polozka,0)) as 'oktober', 
          sum(IF(t.mesiac=11,t.polozka,0)) as 'november', 
          sum(IF(t.mesiac=12,t.polozka,0)) as 'december', 
-         sum(t.polozka) as 'spolu' FROM kapko_tf2 t where rok=2021 group by t.id_vuc WITH ROLLUP";
+         sum(t.polozka) as 'spolu' FROM kapko_tf5 t where rok=2021 group by t.id_vuc WITH ROLLUP";
 
          $query_run = mysqli_query($con, $query);
 
