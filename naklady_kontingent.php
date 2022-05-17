@@ -114,7 +114,7 @@ https://templatemo.com/tm-573-eduwell
          include 'config.php';
          $con = mysqli_connect("$localhost","$user","$password","$db");
 
-         $query = "SELECT ifnull(t.skupina_vstupu,'spolu')id_skupiny , 
+         $query = "SELECT ifnull(t.id_s,'spolu')id_skupiny , 
          sum(IF(t.rok=2016,t.polozka,0)) as '2016', 
          sum(IF(t.rok=2017,t.polozka,0)) as '2017' , 
          sum(IF(t.rok=2018,t.polozka,0)) as '2018' , 
@@ -122,7 +122,7 @@ https://templatemo.com/tm-573-eduwell
          sum(IF(t.rok=2020,t.polozka,0)) as '2020' , 
          sum(IF(t.rok=2021,t.polozka,0)) as '2021', 
          sum(IF(t.rok=2022,t.polozka,0)) as '2022', 
-         sum(t.polozka) as 'spolu' FROM kapko_tf5 t group by t.skupina_vstupu WITH ROLLUP";
+         sum(t.polozka) as 'spolu' FROM kapko_tf2 t group by t.id_s WITH ROLLUP";
 
          $query_run = mysqli_query($con, $query);
 
@@ -201,6 +201,7 @@ https://templatemo.com/tm-573-eduwell
                 <th>Október</th>
                 <th>November</th>
                 <th>December</th>
+                <th>Spolu</th>
             </tr>
         </thead>
         <h2 style="text-align: center;">Kontingenčná tabuľka nákladov podľa vúc a mesiacov v roku 2021</h2>
@@ -213,7 +214,7 @@ https://templatemo.com/tm-573-eduwell
          include 'config.php';
          $con = mysqli_connect("$localhost","$user","$password","$db");
 
-         $query = "SELECT ifnull(t.id_vuc,'vuc')VUC , 
+         $query = "SELECT ifnull(t.id_vuc,'spolu')VUC , 
          sum(IF(t.mesiac=1,t.polozka,0)) as 'januar', 
          sum(IF(t.mesiac=2,t.polozka,0)) as 'februar' , 
          sum(IF(t.mesiac=3,t.polozka,0)) as 'marec' , 
@@ -226,7 +227,7 @@ https://templatemo.com/tm-573-eduwell
          sum(IF(t.mesiac=10,t.polozka,0)) as 'oktober', 
          sum(IF(t.mesiac=11,t.polozka,0)) as 'november', 
          sum(IF(t.mesiac=12,t.polozka,0)) as 'december', 
-         sum(t.polozka) as 'spolu' FROM kapko_tf5 t where rok=2021 group by t.id_vuc WITH ROLLUP";
+         sum(t.polozka) as 'spolu' FROM kapko_tf2 t where rok=2021 group by t.id_vuc WITH ROLLUP";
 
          $query_run = mysqli_query($con, $query);
 
@@ -250,6 +251,7 @@ https://templatemo.com/tm-573-eduwell
                  <td><?= $row['oktober']; ?>€</td>
                  <td><?= $row['november']; ?>€</td>
                  <td><?= $row['december']; ?>€</td>
+                 <td><?= $row['spolu']; ?>€</td>
              </tr>
              <?php
              }

@@ -96,8 +96,8 @@ https://templatemo.com/tm-573-eduwell
                 <th>Rok</th>
                 <th>BA</th>
                 <th>TT</th>
-                <th>TN</th>
-                <th>NR</th>
+                <th>NI</th>
+                
             </tr>
         </thead>
         <h2 style="text-align: center;">Vrchná strana kocky</h2>
@@ -110,7 +110,7 @@ https://templatemo.com/tm-573-eduwell
          include 'config.php';
          $con = mysqli_connect("$localhost","$user","$password","$db");
 
-         $query = "SELECT ifnull(t.rok,'spolu')Rok , sum(IF(t.id_vuc='BA',t.polozka,0)) as 'BA' , sum(IF(t.id_vuc='TT',t.polozka,0)) as 'TT' , sum(IF(t.id_vuc='TN',t.polozka,0)) as 'TN' , sum(IF(t.id_vuc='NR',t.polozka,0)) as 'NR' ,sum(t.polozka) as 'spolu' FROM kapko_tf6 t group by t.rok";
+         $query = "SELECT ifnull(t.rok,'spolu')Rok , sum(IF(t.id_vuc='BA',t.polozka,0)) as 'BA' , sum(IF(t.id_vuc='TT',t.polozka,0)) as 'TT' , sum(IF(t.id_vuc='NI',t.polozka,0)) as 'NI' ,sum(t.polozka) as 'spolu' FROM kapko_tf3 t group by t.rok";
 
          $query_run = mysqli_query($con, $query);
 
@@ -124,8 +124,7 @@ https://templatemo.com/tm-573-eduwell
                  <td><?= $row['Rok']; ?></td>
                  <td><?= $row['BA']; ?>€</td>
                  <td><?= $row['TT']; ?>€</td>
-                 <td><?= $row['TN']; ?>€</td>
-                 <td><?= $row['NR']; ?>€</td>
+                 <td><?= $row['NI']; ?>€</td>
              </tr>
              <?php
              }
@@ -180,6 +179,7 @@ https://templatemo.com/tm-573-eduwell
                 <th>2020</th>
                 <th>2021</th>
                 <th>2022</th>
+                <th>Spolu</th>
             </tr>
         </thead>
         <h2 style="text-align: center;">Bočná strana kocky</h2>
@@ -192,7 +192,7 @@ https://templatemo.com/tm-573-eduwell
          include 'config.php';
          $con = mysqli_connect("$localhost","$user","$password","$db");
 
-         $query = "SELECT ifnull(t.skupina_vystupu,'spolu')id_skupiny ,
+         $query = "SELECT ifnull(t.id_s,'spolu')id_skupiny ,
          sum(IF(t.rok=2016,t.polozka,0)) as '2016', 
          sum(IF(t.rok=2017,t.polozka,0)) as '2017' , 
          sum(IF(t.rok=2018,t.polozka,0)) as '2018' , 
@@ -200,7 +200,7 @@ https://templatemo.com/tm-573-eduwell
          sum(IF(t.rok=2020,t.polozka,0)) as '2020' , 
          sum(IF(t.rok=2021,t.polozka,0)) as '2021',
          sum(IF(t.rok=2022,t.polozka,0)) as '2022',
-         sum(t.polozka) as 'spolu' FROM kapko_tf6 t group by t.skupina_vystupu WITH ROLLUP";
+         sum(t.polozka) as 'spolu' FROM kapko_tf3 t group by t.id_s WITH ROLLUP";
 
          $query_run = mysqli_query($con, $query);
 
@@ -219,6 +219,7 @@ https://templatemo.com/tm-573-eduwell
                  <td><?= $row['2020']; ?>€</td>
                  <td><?= $row['2021']; ?>€</td>
                  <td><?= $row['2022']; ?>€</td>
+                 <td><?= $row['spolu']; ?>€</td>
              </tr>
              <?php
              }
@@ -265,8 +266,8 @@ https://templatemo.com/tm-573-eduwell
                 <th>ID Skupiny</th>
                 <th>BA</th>
                 <th>TT</th>
-                <th>TN</th>
-                <th>NR</th>
+                <th>NI</th>
+                <th>Spolu</th>
             </tr>
         </thead>
         <h2 style="text-align: center;">Predná strana kocky</h2>
@@ -279,12 +280,11 @@ https://templatemo.com/tm-573-eduwell
          include 'config.php';
          $con = mysqli_connect("$localhost","$user","$password","$db");
 
-         $query = "SELECT ifnull(t.skupina_vystupu,'spolu')id_skupiny , 
+         $query = "SELECT ifnull(t.id_s,'spolu')id_skupiny , 
          sum(IF(t.id_vuc='BA',t.polozka,0)) as 'BA' ,
          sum(IF(t.id_vuc='TT',t.polozka,0)) as 'TT' ,
-         sum(IF(t.id_vuc='TN',t.polozka,0)) as 'TN' ,
-         sum(IF(t.id_vuc='NR',t.polozka,0)) as 'NR' ,
-         sum(t.polozka) as 'spolu' FROM kapko_tf6 t group by t.skupina_vystupu WITH ROLLUP";
+         sum(IF(t.id_vuc='NI',t.polozka,0)) as 'NI' ,
+         sum(t.polozka) as 'spolu' FROM kapko_tf3 t group by t.id_s WITH ROLLUP";
 
          $query_run = mysqli_query($con, $query);
 
@@ -298,8 +298,8 @@ https://templatemo.com/tm-573-eduwell
                  <td><?= $row['id_skupiny']; ?></td>
                  <td><?= $row['BA']; ?>€</td>
                  <td><?= $row['TT']; ?>€</td>
-                 <td><?= $row['TN']; ?>€</td>
-                 <td><?= $row['NR']; ?>€</td>
+                 <td><?= $row['NI']; ?>€</td>
+                 <td><?= $row['spolu']; ?>€</td>
              </tr>
              <?php
              }

@@ -89,7 +89,7 @@ https://templatemo.com/tm-573-eduwell
           <div class="header-text">
 
 
-          <img src="tabulka_prijem_skup_vystup.png" alt="Tu bude obrazok grafu rok">
+        
 
           <table class="table table-bordered" style="background-color: white;" style="text-align: center;">
         <thead class="table-danger" style="text-align: center;">
@@ -108,7 +108,7 @@ https://templatemo.com/tm-573-eduwell
          include 'config.php';
          $con = mysqli_connect("$localhost","$user","$password","$db");
 
-         $query = "SELECT (t.`skupina_vystupu` ), SUM(t.polozka) FROM kapko_tf6 t GROUP BY t.`skupina_vystupu` ORDER BY t.`skupina_vystupu`";
+         $query = "SELECT (t.id_s ), SUM(t.polozka) FROM kapko_tf3 t GROUP BY t.id_s ORDER BY t.id_s";
 
          $query_run = mysqli_query($con, $query);
 
@@ -119,7 +119,7 @@ https://templatemo.com/tm-573-eduwell
              ?>
 
              <tr>
-                 <td><?= $row['skupina_vystupu']; ?></td>
+                 <td><?= $row['id_s']; ?></td>
                  <td><?= $row['SUM(t.polozka)']; ?>€</td>
              </tr>
              <?php
@@ -155,7 +155,7 @@ https://templatemo.com/tm-573-eduwell
         <div class="col-lg-12">
           <div class="header-text">
 
-          <img src="tabulka_prijem_vystup.png" alt="Tu bude obrazok grafu mesiac">
+          
 
           <table class="table table-bordered" style="background-color: white;" style="text-align: center;">
         <thead class="table-danger" style="text-align: center;">
@@ -174,7 +174,7 @@ https://templatemo.com/tm-573-eduwell
          include 'config.php';
          $con = mysqli_connect("$localhost","$user","$password","$db");
 
-         $query = "SELECT (t.`typ_vystupu`), SUM(t.polozka) FROM kapko_tf6 t GROUP BY t.`typ_vystupu` ORDER BY t.`typ_vystupu`";
+         $query = "SELECT (t.typ_vystupu), SUM(t.polozka) FROM kapko_tf3 t GROUP BY t.typ_vystupu ORDER BY t.typ_vystupu";
 
          $query_run = mysqli_query($con, $query);
 

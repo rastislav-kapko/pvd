@@ -107,7 +107,7 @@ https://templatemo.com/tm-573-eduwell
          include 'config.php';
          $con = mysqli_connect("$localhost","$user","$password","$db");
 
-         $query = "SELECT (t.`skupina_vstupu` ), SUM(t.polozka) FROM kapko_tf5 t GROUP BY t.`skupina_vstupu` ORDER BY t.`skupina_vstupu`";
+         $query = "SELECT (t.id_s ), SUM(t.polozka) FROM kapko_tf2 t GROUP BY t.id_s ORDER BY t.id_s";
 
          $query_run = mysqli_query($con, $query);
 
@@ -118,7 +118,7 @@ https://templatemo.com/tm-573-eduwell
              ?>
 
              <tr>
-                 <td><?= $row['skupina_vstupu']; ?></td>
+                 <td><?= $row['id_s']; ?></td>
                  <td><?= $row['SUM(t.polozka)']; ?>€</td>
              </tr>
              <?php
@@ -180,7 +180,7 @@ https://templatemo.com/tm-573-eduwell
          include 'config.php';
          $con = mysqli_connect("$localhost","$user","$password","$db");
 
-         $query = "SELECT (t.`typ_vstupu`), SUM(t.polozka) FROM kapko_tf5 t GROUP BY t.`typ_vstupu` ORDER BY t.`typ_vstupu`";
+         $query = "SELECT (t.`typ_vstupu`), SUM(t.polozka) FROM kapko_tf2 t GROUP BY t.`typ_vstupu` ORDER BY t.`typ_vstupu`";
 
          $query_run = mysqli_query($con, $query);
 

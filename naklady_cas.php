@@ -107,7 +107,7 @@ https://templatemo.com/tm-573-eduwell
          include 'config.php';
          $con = mysqli_connect("$localhost","$user","$password","$db");
 
-         $query = "SELECT (t.rok ), SUM(t.polozka) FROM kapko_tf5 t GROUP BY t.rok ORDER BY t.rok";
+         $query = "SELECT (t.rok ), SUM(t.polozka) FROM kapko_tf2 t GROUP BY t.rok ORDER BY t.rok";
 
          $query_run = mysqli_query($con, $query);
 
@@ -180,7 +180,7 @@ https://templatemo.com/tm-573-eduwell
          include 'config.php';
          $con = mysqli_connect("$localhost","$user","$password","$db");
 
-         $query = "SELECT (t.mesiac), SUM(t.polozka) FROM kapko_tf5 t where rok = 2017 GROUP BY t.mesiac ORDER BY t.mesiac";
+         $query = "SELECT (t.mesiac), SUM(t.polozka) FROM kapko_tf2 t where rok = 2017 GROUP BY t.mesiac ORDER BY t.mesiac";
 
          $query_run = mysqli_query($con, $query);
 
@@ -240,7 +240,7 @@ https://templatemo.com/tm-573-eduwell
                 <th>Náklady</th>
             </tr>
         </thead>
-        <h2 style="text-align: center;">Tabuľka náklady podľa času - dni v novembri v roku 2016</h2>
+        <h2 style="text-align: center;">Tabuľka náklady podľa času - dni v novembri v roku 2019</h2>
         <tbody style="text-align: center;">
 
 
@@ -250,7 +250,7 @@ https://templatemo.com/tm-573-eduwell
          include 'config.php';
          $con = mysqli_connect("$localhost","$user","$password","$db");
 
-         $query = "SELECT (t.den ), SUM(t.polozka) FROM kapko_tf5 t where mesiac = 11 AND rok = 2016 GROUP BY t.den ORDER BY t.den";
+         $query = "SELECT (t.den ), SUM(t.polozka) FROM kapko_tf2 t where mesiac = 11 AND rok = 2019 GROUP BY t.den ORDER BY t.den";
 
          $query_run = mysqli_query($con, $query);
 
