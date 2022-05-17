@@ -131,10 +131,6 @@ https://templatemo.com/tm-573-eduwell
         <h2 style="text-align: center;">Tabuľka výrobkov</h2>
         <tbody style="text-align: center;">
 
-
-
-
-            
                         <?php  
                         include 'config.php';
                         $con = mysqli_connect("$localhost","$user","$password","$db");
@@ -169,10 +165,6 @@ https://templatemo.com/tm-573-eduwell
                                     <td><?= $items['predajna_cena']; ?></td>
                                 </tr>
                                 <?php
-
-
-
-
                                
                             }
                         }
@@ -182,7 +174,6 @@ https://templatemo.com/tm-573-eduwell
                         }
                         ?>
                         
-                   
           </tbody>
        
 </table>

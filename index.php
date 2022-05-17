@@ -115,7 +115,7 @@ https://templatemo.com/tm-573-eduwell
           <p>U nás najdete širokú škálu obalových materiálov presne podľa vaších potrieb, stačí si len vybrať.</p>
           <p>Naše krabice sa vyznačujú dlhou životnosťou, nízkou cenou a moderným dizajnom. Taktiež sú všetky z recyklovaného materiálu keďže nám záleži na životnom prostredí.</p>
           <div class="white-button">
-            <a href="contact-us.html">View Courses</a>
+            <a href="contact-us.html">Kontaktujte nás</a>
           </div>
         </div>
       </div>
@@ -393,7 +393,7 @@ https://templatemo.com/tm-573-eduwell
                           <span>4 Weeks</span>
                           <span class="last-span">3 Certificates</span>-->
                           <div class="text-button">
-                            <a href="https://drive.google.com/uc?export=download&id=1s6lZSxWKjdxmdY6PowEVedmunxCkWNUi" class="btn btn-success fa fa-download" style="color: white;">  Stiahnúť zadanie</a>
+                            <a href="https://drive.google.com/uc?export=download&id=1d74aQiLcHZAterBwMjhkJEEKTLLIyjMZ" class="btn btn-success fa fa-download" style="color: white;">  Stiahnúť zadanie</a>
                           </div>
                         </div>
                       </div>

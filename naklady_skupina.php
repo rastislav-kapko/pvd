@@ -78,7 +78,7 @@ https://templatemo.com/tm-573-eduwell
   <!-- ***** Header Area End ***** -->
 
 <section>
-<img src="" alt="Tu bude obrazok grafu rok">
+<img src="tab11.png" alt="Tu bude obrazok grafu rok">
 </section>
 
 
@@ -151,7 +151,7 @@ https://templatemo.com/tm-573-eduwell
 
 
   <section>
-<img src="" alt="Tu bude obrazok grafu mesiac">
+<img src="tab12.png" alt="Tu bude obrazok grafu mesiac">
 </section>
 
 

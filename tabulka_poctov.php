@@ -78,7 +78,7 @@ https://templatemo.com/tm-573-eduwell
   <!-- ***** Header Area End ***** -->
 
 <section>
-<img src="" alt="Tu bude obrazok grafu rok">
+<img src="tab25.png" alt="Tu bude obrazok grafu rok">
 </section>
 
 
@@ -107,7 +107,7 @@ https://templatemo.com/tm-573-eduwell
          include 'config.php';
          $con = mysqli_connect("$localhost","$user","$password","$db");
 
-         $query = "SELECT t.rok,SUM(t.mnozstvo) FROM kapko_tf6 t GROUP BY t.rok ORDER BY t.rok";
+         $query = "SELECT t.rok,SUM(t.mnozstvo) FROM kapko_tf3 t GROUP BY t.rok ORDER BY t.rok";
 
          $query_run = mysqli_query($con, $query);
 
@@ -151,7 +151,7 @@ https://templatemo.com/tm-573-eduwell
 
 
   <section>
-<img src="" alt="Tu bude obrazok grafu mesiac">
+<img src="tab26.png" alt="Tu bude obrazok grafu mesiac">
 </section>
 
 
@@ -219,7 +219,7 @@ https://templatemo.com/tm-573-eduwell
 
 
   <section>
-<img src="" alt="Tu bude obrazok grafu rok">
+<img src="tab27.png" alt="Tu bude obrazok grafu rok">
 </section>
 
 
